@@ -1,0 +1,149 @@
+[
+  {
+    "name": "theme_info",
+    "theme_name": "NxGenAI Solutions",
+    "theme_version": "1.0.0",
+    "theme_author": "Custom Development",
+    "theme_documentation_url": "https://nxgenaisolutions.com",
+    "theme_support_url": "https://nxgenaisolutions.com/support"
+  },
+  {
+    "name": "Colors",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Brand Colors"
+      },
+      {
+        "type": "color",
+        "id": "color_primary",
+        "label": "Primary Color",
+        "default": "#0a4a8f"
+      },
+      {
+        "type": "color",
+        "id": "color_secondary",
+        "label": "Secondary Color",
+        "default": "#1764bf"
+      },
+      {
+        "type": "color",
+        "id": "color_accent",
+        "label": "Accent Color",
+        "default": "#00bfa5",
+        "info": "Used for buttons and highlights"
+      },
+      {
+        "type": "header",
+        "content": "Background Colors"
+      },
+      {
+        "type": "color",
+        "id": "color_background",
+        "label": "Page Background",
+        "default": "#f8f9fa"
+      },
+      {
+        "type": "color",
+        "id": "color_card_background",
+        "label": "Card Background",
+        "default": "#ffffff"
+      },
+      {
+        "type": "header",
+        "content": "Text Colors"
+      },
+      {
+        "type": "color",
+        "id": "color_text",
+        "label": "Body Text",
+        "default": "#333333"
+      },
+      {
+        "type": "color",
+        "id": "color_light_text",
+        "label": "Light Text (for dark backgrounds)",
+        "default": "#ffffff"
+      }
+    ]
+  },
+  {
+    "name": "Typography",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Font Families"
+      },
+      {
+        "type": "font_picker",
+        "id": "type_body_font",
+        "label": "Body Font",
+        "default": "assistant_n4",
+        "info": "Default: Poppins"
+      },
+      {
+        "type": "font_picker",
+        "id": "type_heading_font",
+        "label": "Heading Font",
+        "default": "assistant_n4",
+        "info": "Default: Poppins"
+      }
+    ]
+  },
+  {
+    "name": "Favicon",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "favicon",
+        "label": "Favicon",
+        "info": "32x32px PNG recommended"
+      }
+    ]
+  },
+  {
+    "name": "Social Media",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Social Media Links"
+      },
+      {
+        "type": "text",
+        "id": "social_linkedin_link",
+        "label": "LinkedIn URL"
+      },
+      {
+        "type": "text",
+        "id": "social_twitter_link",
+        "label": "Twitter URL"
+      },
+      {
+        "type": "text",
+        "id": "social_github_link",
+        "label": "GitHub URL"
+      },
+      {
+        "type": "text",
+        "id": "social_facebook_link",
+        "label": "Facebook URL"
+      }
+    ]
+  },
+  {
+    "name": "Contact Information",
+    "settings": [
+      {
+        "type": "text",
+        "id": "contact_email",
+        "label": "Contact Email",
+        "default": "hello@nxgenaisolutions.com"
+      },
+      {
+        "type": "text",
+        "id": "contact_phone",
+        "label": "Contact Phone"
+      }
+    ]
+  }
+]

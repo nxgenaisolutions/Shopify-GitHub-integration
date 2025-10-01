@@ -1,0 +1,32 @@
+{
+  "current": {
+    "color_primary": "#0a4a8f",
+    "color_secondary": "#1764bf",
+    "color_accent": "#00bfa5",
+    "color_background": "#f8f9fa",
+    "color_card_background": "#ffffff",
+    "color_text": "#333333",
+    "color_light_text": "#ffffff",
+    "contact_email": "hello@nxgenaisolutions.com",
+    "sections": {
+      "header": {
+        "type": "header",
+        "settings": {
+          "menu": "main-menu"
+        }
+      },
+      "footer": {
+        "type": "footer",
+        "settings": {
+          "footer_heading": "Ready to Empower Your Team?",
+          "footer_text": "Let's discuss how a short-term engagement can create long-term value for your organization.",
+          "cta_button_text": "Schedule an Initial Chat",
+          "cta_button_link": "/pages/contact",
+          "show_email": true,
+          "contact_email": "hello@nxgenaisolutions.com",
+          "show_social_links": false
+        }
+      }
+    }
+  }
+}
