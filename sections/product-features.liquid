@@ -1,0 +1,85 @@
+<section id="features" class="section">
+  <div class="container">
+    <h2 class="section-title">{{ section.settings.features_heading | default: 'Key Features' }}</h2>
+    
+    <div class="feature-grid">
+      {% for block in section.blocks %}
+        <div class="feature-card" {{ block.shopify_attributes }}>
+          <div class="icon">
+            <i class="{{ block.settings.icon_class }}"></i>
+          </div>
+          <h3>{{ block.settings.feature_title }}</h3>
+          <p>{{ block.settings.feature_description }}</p>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<style>
+  .feature-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 30px;
+  }
+  .feature-card {
+    background: var(--card-bg);
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+    text-align: center;
+  }
+  .feature-card .icon {
+    font-size: 3rem;
+    color: var(--primary-color);
+    margin-bottom: 20px;
+  }
+  .feature-card h3 {
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Product Features",
+  "settings": [
+    {
+      "type": "text",
+      "id": "features_heading",
+      "label": "Features Heading",
+      "default": "Key Features"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "feature",
+      "name": "Feature",
+      "settings": [
+        {
+          "type": "text",
+          "id": "icon_class",
+          "label": "FontAwesome Icon Class",
+          "default": "fas fa-check",
+          "info": "Example: fas fa-robot, fas fa-brain, fas fa-cogs"
+        },
+        {
+          "type": "text",
+          "id": "feature_title",
+          "label": "Feature Title"
+        },
+        {
+          "type": "textarea",
+          "id": "feature_description",
+          "label": "Feature Description"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Product Features"
+    }
+  ]
+}
+{% endschema %}

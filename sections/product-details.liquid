@@ -1,0 +1,186 @@
+<section class="section" style="background-color: {% if section.settings.background_color %}{{ section.settings.background_color }}{% else %}#fff{% endif %};">
+  <div class="container">
+    <h2 class="section-title">{{ section.settings.section_heading }}</h2>
+    
+    <div class="content-grid">
+      <div class="content-text">
+        {% if section.settings.content_heading != blank %}
+          <h3>{{ section.settings.content_heading }}</h3>
+        {% endif %}
+        
+        <div class="rte">
+          {{ section.settings.content_text }}
+        </div>
+
+        {% if section.blocks.size > 0 %}
+          <ul>
+            {% for block in section.blocks %}
+              {% if block.type == 'list_item' %}
+                <li {{ block.shopify_attributes }}>
+                  <strong>{{ block.settings.item_title }}:</strong> {{ block.settings.item_description }}
+                </li>
+              {% endif %}
+            {% endfor %}
+          </ul>
+        {% endif %}
+      </div>
+
+      {% if section.settings.show_code_snippet %}
+        <div class="code-snippet">
+          <pre>{{ section.settings.code_content }}</pre>
+        </div>
+      {% endif %}
+
+      {% if section.settings.show_image and section.settings.section_image != blank %}
+        <div class="showcase-image-container">
+          <img src="{{ section.settings.section_image | img_url: 'master' }}" 
+               alt="{{ section.settings.section_image.alt | default: section.settings.content_heading }}" 
+               loading="lazy">
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+<style>
+  .content-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 50px;
+    align-items: start;
+  }
+  .content-text h3 {
+    font-size: 1.5rem;
+    color: var(--secondary-color);
+    margin-bottom: 15px;
+  }
+  .content-text p {
+    margin-bottom: 15px;
+  }
+  .content-text ul {
+    list-style: none;
+    padding-left: 0;
+  }
+  .content-text li {
+    padding-left: 30px;
+    position: relative;
+    margin-bottom: 10px;
+  }
+  .content-text li::before {
+    content: '\f058';
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+    position: absolute;
+    left: 0;
+    color: var(--accent-color);
+    font-size: 1.2rem;
+  }
+  .code-snippet {
+    background-color: #2d2d2d;
+    border-radius: 8px;
+    padding: 20px;
+    overflow-x: auto;
+    box-shadow: var(--shadow);
+    border-left: 4px solid var(--accent-color);
+  }
+  .code-snippet pre {
+    font-family: 'Fira Code', monospace;
+    color: #f8f8f2;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    font-size: 0.9em;
+    margin: 0;
+  }
+  .showcase-image-container {
+    text-align: center;
+  }
+  .showcase-image-container img {
+    max-width: 100%;
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  }
+  .rte p {
+    margin-bottom: 15px;
+  }
+  @media (max-width: 900px) {
+    .content-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Product Details",
+  "settings": [
+    {
+      "type": "text",
+      "id": "section_heading",
+      "label": "Section Heading",
+      "default": "How It Works"
+    },
+    {
+      "type": "text",
+      "id": "content_heading",
+      "label": "Content Heading"
+    },
+    {
+      "type": "richtext",
+      "id": "content_text",
+      "label": "Content Text"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_code_snippet",
+      "label": "Show Code Snippet",
+      "default": false
+    },
+    {
+      "type": "textarea",
+      "id": "code_content",
+      "label": "Code Content",
+      "info": "Add your code here."
+    },
+    {
+      "type": "checkbox",
+      "id": "show_image",
+      "label": "Show Image",
+      "default": false
+    },
+    {
+      "type": "image_picker",
+      "id": "section_image",
+      "label": "Section Image"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "list_item",
+      "name": "List Item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "item_title",
+          "label": "Item Title"
+        },
+        {
+          "type": "textarea",
+          "id": "item_description",
+          "label": "Item Description"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Product Details"
+    }
+  ]
+}
+{% endschema %}

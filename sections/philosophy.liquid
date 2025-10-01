@@ -1,0 +1,48 @@
+<section class="section philosophy">
+  <div class="container">
+    <p>
+      <i class="fas fa-quote-left"></i>
+      {{ section.settings.philosophy_text }}
+    </p>
+  </div>
+</section>
+
+<style>
+  .philosophy {
+    background-color: var(--card-bg);
+    text-align: center;
+  }
+  .section {
+    padding: 80px 0;
+  }
+  .philosophy p {
+    font-size: 1.5rem;
+    font-style: italic;
+    max-width: 800px;
+    margin: 0 auto;
+    color: var(--secondary-color);
+  }
+  .philosophy i {
+    margin-right: 15px;
+    color: var(--accent-color);
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Philosophy",
+  "settings": [
+    {
+      "type": "html",
+      "id": "philosophy_text",
+      "label": "Philosophy Text",
+      "default": "We invest in the most important resource you have... <b>your people</b>. Our mission is to work together with your team, building skills and solutions side-by-side to create lasting value and true data empowerment."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Philosophy"
+    }
+  ]
+}
+{% endschema %}

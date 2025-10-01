@@ -1,0 +1,86 @@
+<section class="hero">
+  <div class="container">
+    <h1>{{ section.settings.hero_heading }}</h1>
+    <p class="tagline">{{ section.settings.hero_tagline }}</p>
+    
+    {% if section.settings.cta_link != blank %}
+      <a href="{{ section.settings.cta_link }}" class="cta-button">
+        {{ section.settings.cta_text }}
+      </a>
+    {% endif %}
+  </div>
+</section>
+
+<style>
+  .hero {
+    background-color: var(--primary-color);
+    color: var(--light-text-color);
+    padding: 100px 0;
+    text-align: center;
+  }
+  .hero h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+  }
+  .hero .tagline {
+    font-size: 1.2rem;
+    max-width: 700px;
+    margin: 0 auto 30px auto;
+    font-weight: 300;
+  }
+  .cta-button {
+    background-color: var(--accent-color);
+    color: var(--primary-color) !important;
+    padding: 15px 30px;
+    text-decoration: none;
+    font-weight: 600;
+    border-radius: 5px;
+    transition: background-color 0.3s, transform 0.2s;
+    display: inline-block;
+  }
+  .cta-button:hover {
+    background-color: #fff;
+    transform: translateY(-2px);
+  }
+  @media (max-width: 768px) {
+    .hero h1 {
+      font-size: 2.2rem;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Hero - Home",
+  "settings": [
+    {
+      "type": "text",
+      "id": "hero_heading",
+      "label": "Heading",
+      "default": "Empower Your Team. Automate Your Future."
+    },
+    {
+      "type": "textarea",
+      "id": "hero_tagline",
+      "label": "Tagline",
+      "default": "Expert GenAI and Automation consulting designed to unlock the true potential of your people and your data through hands-on, collaborative partnership."
+    },
+    {
+      "type": "text",
+      "id": "cta_text",
+      "label": "CTA Button Text",
+      "default": "Start the Conversation"
+    },
+    {
+      "type": "url",
+      "id": "cta_link",
+      "label": "CTA Button Link"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Hero Home"
+    }
+  ]
+}
+{% endschema %}

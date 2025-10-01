@@ -1,0 +1,159 @@
+<section id="contact" class="footer">
+  <div class="container">
+    <h2>{{ section.settings.footer_heading }}</h2>
+    <p>{{ section.settings.footer_text }}</p>
+    
+    {% if section.settings.cta_button_link != blank %}
+      <a href="{{ section.settings.cta_button_link }}" class="cta-button">
+        {{ section.settings.cta_button_text }}
+      </a>
+    {% endif %}
+
+    {% if section.settings.show_email %}
+      <p style="margin-top: 20px;">
+        <a href="mailto:{{ section.settings.contact_email }}" style="color: #fff; text-decoration: underline;">
+          {{ section.settings.contact_email }}
+        </a>
+      </p>
+    {% endif %}
+
+    {% if section.settings.show_social_links %}
+      <div class="social-links">
+        {% if section.settings.social_linkedin != blank %}
+          <a href="{{ section.settings.social_linkedin }}" target="_blank" rel="noopener">
+            <i class="fab fa-linkedin"></i>
+          </a>
+        {% endif %}
+        {% if section.settings.social_twitter != blank %}
+          <a href="{{ section.settings.social_twitter }}" target="_blank" rel="noopener">
+            <i class="fab fa-twitter"></i>
+          </a>
+        {% endif %}
+        {% if section.settings.social_github != blank %}
+          <a href="{{ section.settings.social_github }}" target="_blank" rel="noopener">
+            <i class="fab fa-github"></i>
+          </a>
+        {% endif %}
+      </div>
+    {% endif %}
+
+    <div class="footer-bottom">
+      <p>&copy; {{ 'now' | date: '%Y' }} {{ shop.name }}. All rights reserved.</p>
+    </div>
+  </div>
+</section>
+
+<style>
+  .footer {
+    background-color: var(--primary-color);
+    color: var(--light-text-color);
+    text-align: center;
+    padding: 60px 0 30px 0;
+  }
+  .footer h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+  }
+  .footer p {
+    margin-bottom: 10px;
+  }
+  .cta-button {
+    background-color: var(--accent-color);
+    color: var(--primary-color) !important;
+    padding: 15px 30px;
+    text-decoration: none;
+    font-weight: 600;
+    border-radius: 5px;
+    transition: background-color 0.3s, transform 0.2s;
+    display: inline-block;
+    margin-top: 10px;
+  }
+  .cta-button:hover {
+    background-color: #fff;
+    transform: translateY(-2px);
+  }
+  .social-links {
+    margin: 30px 0 20px 0;
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+  }
+  .social-links a {
+    color: var(--light-text-color);
+    font-size: 1.5rem;
+    transition: color 0.3s;
+  }
+  .social-links a:hover {
+    color: var(--accent-color);
+  }
+  .footer-bottom {
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255,255,255,0.2);
+    font-size: 0.9rem;
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Footer",
+  "settings": [
+    {
+      "type": "text",
+      "id": "footer_heading",
+      "label": "Heading",
+      "default": "Ready to Empower Your Team?"
+    },
+    {
+      "type": "textarea",
+      "id": "footer_text",
+      "label": "Text",
+      "default": "Let's discuss how a short-term engagement can create long-term value for your organization."
+    },
+    {
+      "type": "text",
+      "id": "cta_button_text",
+      "label": "CTA Button Text",
+      "default": "Schedule an Initial Chat"
+    },
+    {
+      "type": "url",
+      "id": "cta_button_link",
+      "label": "CTA Button Link"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_email",
+      "label": "Show Email",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "contact_email",
+      "label": "Contact Email",
+      "default": "hello@nxgenaisolutions.com"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_social_links",
+      "label": "Show Social Links",
+      "default": false
+    },
+    {
+      "type": "url",
+      "id": "social_linkedin",
+      "label": "LinkedIn URL"
+    },
+    {
+      "type": "url",
+      "id": "social_twitter",
+      "label": "Twitter URL"
+    },
+    {
+      "type": "url",
+      "id": "social_github",
+      "label": "GitHub URL"
+    }
+  ]
+}
+{% endschema %}

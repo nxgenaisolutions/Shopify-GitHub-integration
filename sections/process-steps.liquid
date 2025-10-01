@@ -1,0 +1,126 @@
+<section id="process" class="section process">
+  <div class="container">
+    <h2 class="section-title">{{ section.settings.section_heading }}</h2>
+    <p class="section-subtitle">{{ section.settings.section_subtitle }}</p>
+    
+    <div class="process-steps">
+      {% for block in section.blocks %}
+        <div class="process-step" {{ block.shopify_attributes }}>
+          <div class="number">{{ forloop.index }}</div>
+          <h3>{{ block.settings.step_title }}</h3>
+          <p>{{ block.settings.step_description }}</p>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<style>
+  .process {
+    background-color: var(--secondary-color);
+    color: var(--light-text-color);
+  }
+  .process .section-title, 
+  .process .section-subtitle {
+    color: var(--light-text-color);
+  }
+  .process-steps {
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
+    gap: 30px;
+  }
+  .process-step {
+    max-width: 300px;
+  }
+  .process-step .number {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--accent-color);
+    margin-bottom: 10px;
+    border: 3px solid var(--accent-color);
+    width: 60px;
+    height: 60px;
+    line-height: 54px;
+    border-radius: 50%;
+    display: inline-block;
+  }
+  .process-step h3 {
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+  }
+  @media (max-width: 768px) {
+    .process-steps {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Process Steps",
+  "settings": [
+    {
+      "type": "text",
+      "id": "section_heading",
+      "label": "Section Heading",
+      "default": "How It Works"
+    },
+    {
+      "type": "html",
+      "id": "section_subtitle",
+      "label": "Section Subtitle",
+      "default": "Our process is built on partnership and empowerment. We do it <b>with</b> you, not <b>for</b> you."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "step",
+      "name": "Process Step",
+      "settings": [
+        {
+          "type": "text",
+          "id": "step_title",
+          "label": "Step Title",
+          "default": "Step Title"
+        },
+        {
+          "type": "textarea",
+          "id": "step_description",
+          "label": "Step Description",
+          "default": "Description of this step in the process."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Process Steps",
+      "blocks": [
+        {
+          "type": "step",
+          "settings": {
+            "step_title": "Discover & Prototype",
+            "step_description": "We start with a chat to assess your needs. Then, we work together with your team to build a working prototype using non-company data, transferring key skills from day one."
+          }
+        },
+        {
+          "type": "step",
+          "settings": {
+            "step_title": "Plan & Architect",
+            "step_description": "With your team now empowered, we take the time to meticulously plan the official solution using your real data, focusing on security, scalability, and business impact."
+          }
+        },
+        {
+          "type": "step",
+          "settings": {
+            "step_title": "Co-Build & Deploy",
+            "step_description": "Finally, we build and deploy the end-to-end production solution together. Your team is involved at every step, ensuring they have the ownership and knowledge to run it long after we're gone."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

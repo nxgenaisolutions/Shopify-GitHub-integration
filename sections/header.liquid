@@ -1,0 +1,131 @@
+<nav class="navbar">
+  <div class="container nav-container">
+    {% if section.settings.logo != blank %}
+      <a href="{{ routes.root_url }}" class="nav-logo-image">
+        <img src="{{ section.settings.logo | img_url: '200x' }}" alt="{{ shop.name }}" loading="lazy">
+      </a>
+    {% else %}
+      <a href="{{ routes.root_url }}" class="nav-logo">{{ shop.name }}</a>
+    {% endif %}
+
+    <button class="mobile-menu-toggle" aria-label="Toggle menu">
+      <i class="fas fa-bars"></i>
+    </button>
+
+    <ul class="nav-menu" id="nav-menu">
+      {% for link in linklists[section.settings.menu].links %}
+        <li>
+          <a href="{{ link.url }}" {% if link.active %}class="active"{% endif %}>
+            {{ link.title }}
+          </a>
+        </li>
+      {% endfor %}
+      
+      {% if shop.customer_accounts_enabled %}
+        <li>
+          {% if customer %}
+            <a href="{{ routes.account_url }}">
+              <i class="fas fa-user"></i> Account
+            </a>
+          {% else %}
+            <a href="{{ routes.account_login_url }}">
+              <i class="fas fa-sign-in-alt"></i> Login
+            </a>
+          {% endif %}
+        </li>
+      {% endif %}
+    </ul>
+  </div>
+</nav>
+
+<style>
+  .navbar {
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(10px);
+    padding: 15px 0;
+    position: sticky;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  }
+  .nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .nav-logo, .nav-logo-image {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    text-decoration: none;
+  }
+  .nav-logo-image img {
+    max-height: 50px;
+    width: auto;
+  }
+  .nav-menu {
+    list-style: none;
+    display: flex;
+    gap: 25px;
+    margin: 0;
+    padding: 0;
+  }
+  .nav-menu a {
+    color: var(--text-color);
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s;
+  }
+  .nav-menu a:hover, 
+  .nav-menu a.active {
+    color: var(--accent-color);
+  }
+  .mobile-menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    cursor: pointer;
+  }
+
+  @media (max-width: 768px) {
+    .mobile-menu-toggle {
+      display: block;
+    }
+    .nav-menu {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background: white;
+      flex-direction: column;
+      padding: 20px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    .nav-menu.active {
+      display: flex;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Header",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "Logo Image"
+    },
+    {
+      "type": "link_list",
+      "id": "menu",
+      "label": "Menu",
+      "default": "main-menu"
+    }
+  ]
+}
+{% endschema %}

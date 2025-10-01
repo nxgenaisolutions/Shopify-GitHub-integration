@@ -1,0 +1,143 @@
+<section id="services" class="section">
+  <div class="container">
+    <h2 class="section-title">{{ section.settings.section_heading }}</h2>
+    <p class="section-subtitle">{{ section.settings.section_subtitle }}</p>
+
+    <div class="services-grid">
+      {% if section.settings.collection != blank %}
+        {% assign collection = collections[section.settings.collection] %}
+        {% for product in collection.products limit: section.settings.products_to_show %}
+          <div class="service-card">
+            {% if product.metafields.custom.icon != blank %}
+              <div class="icon">
+                <i class="{{ product.metafields.custom.icon }}"></i>
+              </div>
+            {% else %}
+              <div class="icon">
+                <i class="fas fa-cog"></i>
+              </div>
+            {% endif %}
+            
+            <h3>{{ product.title }}</h3>
+            <p>{{ product.description | strip_html | truncate: 150 }}</p>
+            <a href="{{ product.url }}" class="learn-more">Learn More &rarr;</a>
+          </div>
+        {% endfor %}
+      {% else %}
+        <div class="service-card">
+          <div class="icon"><i class="fas fa-robot"></i></div>
+          <h3>End-to-End Data Automation</h3>
+          <p>From data arrival in any format to final delivery, we co-build fully automated pipelines.</p>
+          <a href="/products/automation" class="learn-more">Learn More &rarr;</a>
+        </div>
+        <div class="service-card">
+          <div class="icon"><i class="fas fa-brain"></i></div>
+          <h3>Custom Deep Research Agent</h3>
+          <p>Turn your proprietary data into an intelligent analyst that can answer complex business questions.</p>
+          <a href="/products/deep-research" class="learn-more">Learn More &rarr;</a>
+        </div>
+        <div class="service-card">
+          <div class="icon"><i class="fas fa-file-alt"></i></div>
+          <h3>Automated Reporting Suite</h3>
+          <p>Generate world-class, boardroom-ready reports for any purpose.</p>
+          <a href="/products/custom-reports" class="learn-more">Learn More &rarr;</a>
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+<style>
+  .section-title {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+    color: var(--primary-color);
+  }
+  .section-subtitle {
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto 50px auto;
+    color: #666;
+  }
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 30px;
+  }
+  .service-card {
+    background-color: var(--card-bg);
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+    border-top: 4px solid var(--accent-color);
+    transition: transform 0.3s;
+    display: flex;
+    flex-direction: column;
+  }
+  .service-card:hover {
+    transform: translateY(-5px);
+  }
+  .service-card .icon {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin-bottom: 20px;
+  }
+  .service-card h3 {
+    font-size: 1.4rem;
+    margin-bottom: 10px;
+  }
+  .service-card p {
+    font-size: 0.95rem;
+    color: #555;
+    flex-grow: 1;
+  }
+  .service-card .learn-more {
+    margin-top: 20px;
+    font-weight: 600;
+    color: var(--secondary-color);
+    text-decoration: none;
+  }
+  .service-card .learn-more:hover {
+    color: var(--accent-color);
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Services Grid",
+  "settings": [
+    {
+      "type": "text",
+      "id": "section_heading",
+      "label": "Section Heading",
+      "default": "Our Services"
+    },
+    {
+      "type": "textarea",
+      "id": "section_subtitle",
+      "label": "Section Subtitle",
+      "default": "We offer short-term, high-impact engagements (1-3 months) focused on upskilling your team and delivering powerful, automated solutions."
+    },
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Services Collection"
+    },
+    {
+      "type": "range",
+      "id": "products_to_show",
+      "min": 3,
+      "max": 12,
+      "step": 1,
+      "label": "Number of services to show",
+      "default": 6
+    }
+  ],
+  "presets": [
+    {
+      "name": "Services Grid"
+    }
+  ]
+}
+{% endschema %}
