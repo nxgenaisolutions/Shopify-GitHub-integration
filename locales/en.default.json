@@ -1,0 +1,53 @@
+{
+  "general": {
+    "meta": {
+      "tags": "Tagged \"{{ tags }}\"",
+      "page": "Page {{ page }}"
+    },
+    "404": {
+      "title": "404 Page Not Found",
+      "subtext_html": "The page you requested does not exist. <a href=\"/\">Return to home</a>"
+    },
+    "breadcrumbs": {
+      "home": "Home",
+      "back": "Back"
+    },
+    "forms": {
+      "post_error": "Please correct the following and resubmit:",
+      "required": "Required"
+    },
+    "accessibility": {
+      "skip_to_content": "Skip to content",
+      "close": "Close",
+      "loading": "Loading"
+    }
+  },
+  "products": {
+    "general": {
+      "learn_more": "Learn More",
+      "view_details": "View Details"
+    }
+  },
+  "contact": {
+    "form": {
+      "name": "Name",
+      "email": "Email",
+      "phone": "Phone",
+      "company": "Company",
+      "message": "Message",
+      "send": "Send Message",
+      "post_success": "Thanks for contacting us. We'll get back to you as soon as possible.",
+      "consultation_request": "Request Consultation"
+    }
+  },
+  "sections": {
+    "header": {
+      "menu": "Menu",
+      "account": "Account",
+      "login": "Log in"
+    },
+    "footer": {
+      "copyright": "Copyright"
+    }
+  }
+}
