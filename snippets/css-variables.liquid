@@ -1,0 +1,21 @@
+<style>
+  :root {
+    --primary-color: {{ settings.color_primary | default: '#0a4a8f' }};
+    --secondary-color: {{ settings.color_secondary | default: '#1764bf' }};
+    --accent-color: {{ settings.color_accent | default: '#00bfa5' }};
+    --bg-color: {{ settings.color_background | default: '#f8f9fa' }};
+    --text-color: {{ settings.color_text | default: '#333' }};
+    --light-text-color: {{ settings.color_light_text | default: '#fff' }};
+    --card-bg: {{ settings.color_card_background | default: '#ffffff' }};
+    --code-bg: #2d2d2d;
+    --shadow: 0 6px 20px rgba(0,0,0,0.07);
+  }
+
+  body {
+    font-family: 'Poppins', sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Poppins', sans-serif;
+  }
+</style>
